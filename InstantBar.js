@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         YouTube Always Hoverable ProgressBar
 // @namespace    https://github.com/Amadeus-AI
-// @version      1.0
+// @version      1.0.2
 // @description  Makes progressbar hoverable from the very beginning (also works when paused).
+// @icon         https://www.youtube.com/s/desktop/3748dff5/img/favicon_48.png
 // @author       AmadeusAI
 // @match        *://www.youtube.com/*
 // @license      MIT
@@ -15,8 +16,9 @@ var InstantBar =
 `
 .ytp-chrome-bottom { opacity: 0 }
 .ytp-gradient-bottom { opacity: 0 }
-.html5-video-player:hover .ytp-chrome-bottom{ opacity: 1 }
-.html5-video-player:hover .ytp-gradient-bottom{ opacity: 1 }
+.html5-video-player:not(.ytp-fullscreen):hover > .ytp-chrome-bottom { opacity: 1 }
+.html5-video-player:not(.ytp-fullscreen):hover > .ytp-gradient-bottom { opacity: 1 }
+.html5-video-player.ytp-fullscreen > .ytp-chrome-bottom:hover { opacity: 1 }
 
 `,
 
@@ -42,4 +44,3 @@ var InstantBar =
 };
 
 InstantBar.start();
-
